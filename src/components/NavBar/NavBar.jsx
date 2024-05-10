@@ -15,7 +15,7 @@ function NavBar() {
         <NavLink to={`/`} className={handleLink}>
           Home
         </NavLink>
-        <NavLink to="/donation" className={handleLink}>
+        <NavLink to="/donations" className={handleLink}>
           Donation
         </NavLink>
         <NavLink to="/statistics" className={handleLink}>

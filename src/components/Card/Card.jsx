@@ -1,17 +1,36 @@
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import img from '../../assets/education.png'
 
-function Card() {
+export default function Card({ data }) {
   return (
-    <div className="card card-compact bg-base-100 shadow-xl">
-      <figure>
-        <img className="w-full" src={img} alt="Shoes" />
-      </figure>
-      <div className="card-body">
-        <div className="badge bg-red-600 text-white">Badge</div>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
+    <Link to={`donation/${data.id}`}>
+      <div
+        className={`card card-compact shadow-xl`}
+        style={{ backgroundColor: data.card_bg }}
+      >
+        <figure>
+          <img className="w-full" src={img} alt="Shoes" />
+        </figure>
+        <div className="card-body">
+          <div
+            className={`badge font-bold`}
+            style={{
+              backgroundColor: data.category_bg,
+              color: data.color_text,
+            }}
+          >
+            {data.category}
+          </div>
+          <p className="text-2xl font-bold" style={{ color: data.color_text }}>
+            {data.title}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
-export default Card
+Card.propTypes = {
+  data: PropTypes.object,
+}

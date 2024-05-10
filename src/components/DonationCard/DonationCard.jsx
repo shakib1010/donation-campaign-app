@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom'
 import photo1 from '../../assets/Rectangle 4287-1.png'
 
-function DonationCard() {
+function DonationCard({ data }) {
   return (
     <>
       <div className="card card-side bg-base-100 shadow-xl">
@@ -8,13 +9,23 @@ function DonationCard() {
           <img className="h-full" src={photo1} alt="Movie" />
         </figure>
         <div className="card-body">
-          <div className="badge bg-red-600 text-white">Badge</div>
-          <h2 className="card-title">Clean water for children</h2>
-          <p>$1234</p>
+          <div
+            className="badge"
+            style={{
+              backgroundColor: data.category_bg,
+              color: data.color_text,
+            }}
+          >
+            {data.category}
+          </div>
+          <h2 className="card-title">{data.title}</h2>
+          <p>{data.price}</p>
           <div>
-            <button className="btn bg-purple-400 hover:bg-red-400 text-white">
-              View details
-            </button>
+            <Link to={`/donation/${data.id}`}>
+              <button className="btn bg-purple-400 hover:bg-red-400 text-white">
+                View details
+              </button>
+            </Link>
           </div>
         </div>
       </div>
